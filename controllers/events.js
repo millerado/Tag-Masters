@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 
 // New
 router.get('/new', (req, res) => {
-  res.render('newEvent.ejs');
+  res.render('eventNew.ejs');
 });
 
 // Delete
@@ -21,7 +21,10 @@ router.get('/new', (req, res) => {
 
 // Create
 router.post('/', (req, res) => {
-  res.send(req.body);
+  Event.create(req.body, (err, createdEvent) => {
+    console.log('Error: ', err);
+    res.redirect('/events');
+  });
 });
 
 // Edit
