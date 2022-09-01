@@ -20,6 +20,9 @@ router.get('/new', (req, res) => {
 // Update
 
 // Create
+router.post('/', (req, res) => {
+  res.send(req.body);
+});
 
 // Edit
 router.get('/:id/edit', (req, res) => {
