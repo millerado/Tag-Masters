@@ -1,11 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const Book = require('../models/event');
+const Event = require('../models/event');
 
 // INDUCES
 // Index
 router.get('/', (req, res) => {
-  res.send('index');
+  Event.find({}, (err, foundEvents) => {
+    res.render('eventIndex.ejs', { events: foundEvents });
+  });
 });
 
 // New
