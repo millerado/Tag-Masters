@@ -1,6 +1,7 @@
 // Dependencies
 const express = require('express');
 const mongoose = require('mongoose');
+const eventsRouter = require('./controllers/events');
 
 // Intialize App
 const app = express();
@@ -18,11 +19,12 @@ db.on('connected', () => console.log('Connected to MongoDB'));
 db.on('error', (err) => console.log('MongoDB Error: ', err));
 
 // Middleware
+app.use(express.urlencoded({ extended: false }));
 
 // Homepage Redirect
 
 // Mount Controllers
-// Routes - INDUCES
+app.use('/events', eventsRouter);
 
 // Listen
 app.listen(PORT, () => {
