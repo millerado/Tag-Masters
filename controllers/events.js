@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 
 // New
 router.get('/new', (req, res) => {
-  res.send('index');
+  res.render('newEvent.ejs');
 });
 
 // Delete
