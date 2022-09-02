@@ -12,7 +12,7 @@
     <ul>
       <% events.forEach(e => { %>
       <li>
-        <a href=""><%= e.name %></a>
+        <a href="/events/<%= e._id %>"><%= e.name %></a>
         <p><%= e.course %></p>
       </li>
       <% }); %>
