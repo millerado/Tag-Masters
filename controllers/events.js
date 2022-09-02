@@ -23,6 +23,11 @@ router.delete('/:id', (req, res) => {
 });
 
 // Update
+router.put('/:id', (req, res) => {
+  Event.findByIdAndUpdate(req.params.id, req.body, (err, unUpdatedEvent) => {
+    res.redirect('/events/' + req.params.id);
+  });
+});
 
 // Create
 router.post('/', (req, res) => {
@@ -34,7 +39,9 @@ router.post('/', (req, res) => {
 
 // Edit
 router.get('/:id/edit', (req, res) => {
-  res.send('index');
+  Event.findById(req.params.id, (err, foundEvent) => {
+    res.render('events/edit.ejs', { event: foundEvent });
+  });
 });
 
 // Show
