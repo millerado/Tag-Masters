@@ -2,6 +2,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const eventsRouter = require('./controllers/events');
+const methodOverride = require('method-override');
 
 // Intialize App
 const app = express();
@@ -20,6 +21,7 @@ db.on('error', (err) => console.log('MongoDB Error: ', err));
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
+app.use(methodOverride('_method'));
 
 // Homepage Redirect
 
