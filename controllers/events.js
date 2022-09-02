@@ -16,6 +16,11 @@ router.get('/new', (req, res) => {
 });
 
 // Delete
+router.delete('/:id', (req, res) => {
+  Event.findByIdAndDelete(req.params.id, (err, deletedEvent) => {
+    res.redirect('/events');
+  });
+});
 
 // Update
 
