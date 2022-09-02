@@ -6,13 +6,13 @@ const Event = require('../models/event');
 // Index
 router.get('/', (req, res) => {
   Event.find({}, (err, foundEvents) => {
-    res.render('eventIndex.ejs', { events: foundEvents });
+    res.render('events/index.ejs', { events: foundEvents });
   });
 });
 
 // New
 router.get('/new', (req, res) => {
-  res.render('eventNew.ejs');
+  res.render('events/new.ejs');
 });
 
 // Delete
@@ -34,7 +34,9 @@ router.get('/:id/edit', (req, res) => {
 
 // Show
 router.get('/:id', (req, res) => {
-  res.send('index');
+  Event.findById(req.params.id, (err, foundEvent) => {
+    res.render('events/show.ejs', { event: foundEvent });
+  });
 });
 
 module.exports = router;
