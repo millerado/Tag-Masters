@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const eventsRouter = require('./controllers/events');
 const playersRouter = require('./controllers/players');
 const methodOverride = require('method-override');
+const Player = require('./models/player');
+const Event = require('./models/event');
 
 // Intialize App
 const app = express();
@@ -32,6 +34,22 @@ app.get('/', (req, res) => {
 // Mount Controllers
 app.use('/events', eventsRouter);
 app.use('/players', playersRouter);
+
+app.put('/events/:id/addplayer', (req, res) => {
+  Player.find(req.body, (err, foundPlayer) => {
+    console.log('Find Error: ', err);
+    Event.findByIdAndUpdate(
+      req.params.id,
+      {
+        $push: { players: foundPlayer[0].name },
+      },
+      (err2, unUpdatedEvent) => {
+        console.log('Update Error: ', err2);
+        res.redirect('/events/' + req.params.id);
+      }
+    );
+  });
+});
 
 // Listen
 app.listen(PORT, () => {
