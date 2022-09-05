@@ -38,6 +38,10 @@ app.use('/players', playersRouter);
 app.put('/events/:id/addplayer', (req, res) => {
   Player.find(req.body, (err, foundPlayer) => {
     console.log('Find Error: ', err);
+    if (foundPlayer.length === 0) {
+      return res.redirect('/events/' + req.params.id);
+    }
+    console.log(foundPlayer);
     Event.findByIdAndUpdate(
       req.params.id,
       {
