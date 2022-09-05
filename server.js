@@ -2,6 +2,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const eventsRouter = require('./controllers/events');
+const playersRouter = require('./controllers/players');
 const methodOverride = require('method-override');
 
 // Intialize App
@@ -24,9 +25,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 
 // Homepage Redirect
+app.get('/', (req, res) => {
+  res.redirect('/events');
+});
 
 // Mount Controllers
 app.use('/events', eventsRouter);
+app.use('/players', playersRouter);
 
 // Listen
 app.listen(PORT, () => {
