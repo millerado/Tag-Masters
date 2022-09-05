@@ -20,6 +20,12 @@ router.get('/new', (req, res) => {
 // Update Route
 
 // Create Route
+router.post('/', (req, res) => {
+  Player.create(req.body, (err, createdPlayer) => {
+    console.log('Error: ', err);
+    res.redirect('/players');
+  });
+});
 
 // Edit Route
 
