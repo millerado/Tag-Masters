@@ -8,11 +8,12 @@
   </head>
   <body>
     <h1>Players</h1>
+    <a href="/">Back</a><br />
+    <a href="/players/new">Add New Player</a>
     <ul>
       <% players.forEach(p => { %>
       <li>Name: <%= p.name %> ID: <%= p._id %></li>
       <% }) %>
     </ul>
-    <a href="/">Back</a>
   </body>
 </html>
