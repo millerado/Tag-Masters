@@ -10,4 +10,18 @@ router.get('/', (req, res) => {
   });
 });
 
+// New Route
+router.get('/new', (req, res) => {
+  res.render('players/new.ejs');
+});
+
+// Delete Route
+
+// Update Route
+
+// Create Route
+
+// Edit Route
+
+// Show Route
 module.exports = router;
