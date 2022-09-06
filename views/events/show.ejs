@@ -30,9 +30,9 @@
       </tr>
       <% event.players.forEach(p => { %>
       <tr>
-        <td><%= p %></td>
+        <td><%= p.name %></td>
         <td>
-          <input type="text" name="currentTag" />
+          <input type="text" name="currentTag" value="<%= p.currentTag %>" />
         </td>
         <td>
           <input type="text" name="newTag" />
