@@ -21,10 +21,27 @@
     <p><%= event.date %></p>
     <p><%= event.course %></p>
     <p>Players:</p>
-    <ul>
+    <table>
+      <tr>
+        <th>Player</th>
+        <th>Current Tag</th>
+        <th>New Tag</th>
+        <th>Score</th>
+      </tr>
       <% event.players.forEach(p => { %>
-      <li><%= p %></li>
+      <tr>
+        <td><%= p %></td>
+        <td>
+          <input type="text" name="currentTag" />
+        </td>
+        <td>
+          <input type="text" name="newTag" />
+        </td>
+        <td>
+          <input type="text" name="score" />
+        </td>
+      </tr>
       <% }) %>
-    </ul>
+    </table>
   </body>
 </html>
