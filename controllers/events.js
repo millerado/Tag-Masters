@@ -40,7 +40,7 @@ router.put('/:id/addplayer', (req, res) => {
     Event.findByIdAndUpdate(
       req.params.id,
       {
-        $push: { players: foundPlayer[0].name },
+        $push: { players: foundPlayer[0] },
       },
       (err2, unUpdatedEvent) => {
         console.log('Update Error: ', err2);
