@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="/app/script.js"></script>
+    <script defer src="/app/script.js"></script>
     <title>Show</title>
   </head>
   <body>
@@ -23,28 +23,30 @@
     <p><%= event.date %></p>
     <p><%= event.course %></p>
     <p>Players:</p>
-    <table>
-      <tr>
-        <th>Player</th>
-        <th>Current Tag</th>
-        <th>New Tag</th>
-        <th>Score</th>
-      </tr>
-      <% event.players.forEach(p => { %>
-      <tr>
-        <td><%= p.name %></td>
-        <td>
-          <input type="text" name="currentTag" value="<%= p.currentTag %>" />
-        </td>
-        <td>
-          <input type="text" name="newTag" />
-        </td>
-        <td>
-          <input type="text" name="score" />
-        </td>
-      </tr>
-      <% }) %>
+    <table id="mytable">
+      <thead>
+        <tr>
+          <th>Player</th>
+          <th>Current Tag</th>
+          <th>New Tag</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% event.players.forEach(p => { %>
+        <tr>
+          <td><%= p.name %></td>
+          <td><%= p.currentTag %></td>
+          <td>
+            <input type="text" name="newTag" />
+          </td>
+          <td>
+            <input type="text" name="score" />
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
     </table>
-    <button>Process Event</button>
+    <button id="clickMe">Process Event</button>
   </body>
 </html>
