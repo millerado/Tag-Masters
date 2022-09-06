@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Event = require('../models/event');
+const Player = require('../models/player');
 
 // INDUCES
 // Index
@@ -26,6 +27,26 @@ router.delete('/:id', (req, res) => {
 router.put('/:id', (req, res) => {
   Event.findByIdAndUpdate(req.params.id, req.body, (err, unUpdatedEvent) => {
     res.redirect('/events/' + req.params.id);
+  });
+});
+
+router.put('/:id/addplayer', (req, res) => {
+  Player.find(req.body, (err, foundPlayer) => {
+    console.log('Find Error: ', err);
+    if (foundPlayer.length === 0) {
+      return res.redirect('/events/' + req.params.id);
+    }
+    console.log(foundPlayer);
+    Event.findByIdAndUpdate(
+      req.params.id,
+      {
+        $push: { players: foundPlayer[0].name },
+      },
+      (err2, unUpdatedEvent) => {
+        console.log('Update Error: ', err2);
+        res.redirect('/events/' + req.params.id);
+      }
+    );
   });
 });
 
