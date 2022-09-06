@@ -28,7 +28,7 @@ app.use(methodOverride('_method'));
 
 // Homepage Redirect
 app.get('/', (req, res) => {
-  res.redirect('/events');
+  res.render('homepage.ejs');
 });
 
 // Mount Controllers
