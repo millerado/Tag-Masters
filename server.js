@@ -25,6 +25,7 @@ db.on('error', (err) => console.log('MongoDB Error: ', err));
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
+app.use(express.static('public'));
 
 // Homepage Redirect
 app.get('/', (req, res) => {
