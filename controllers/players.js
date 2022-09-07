@@ -18,6 +18,15 @@ router.get('/new', (req, res) => {
 // Delete Route
 
 // Update Route
+/*
+Need to send something back
+router.put('/:id', (req, res) => {
+  console.log(req.body);
+  Player.findByIdAndUpdate(req.params.id, req.body, (err, unUpdatedPlayer) => {
+    console.log(req.params.id);
+  });
+});
+*/
 
 // Create Route
 router.post('/', (req, res) => {
