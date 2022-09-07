@@ -36,8 +36,8 @@
         <% event.players.forEach(p => { %>
         <tr>
           <td><%= p.name %></td>
-          <td><%= p.currentTag %></td>
-          <td></td>
+          <td class="current-tag"><%= p.currentTag %></td>
+          <td class="new-tag"></td>
           <td class="score-cell">-</td>
         </tr>
         <% }) %>
