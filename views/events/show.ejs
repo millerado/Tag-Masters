@@ -9,6 +9,7 @@
     <title>Show</title>
   </head>
   <body>
+    <span id="event-id" class="hidden"><%= event._id %></span>
     <a href="/events">Back</a>
     <form action="/events/<%= event._id %>?_method=DELETE" method="POST">
       <input type="submit" value="DELETE" />
@@ -19,6 +20,8 @@
       <input type="submit" value="Add" />
     </form>
     <a href="/events/<%= event._id %>/edit">Edit</a>
+    <br />
+    <a href="/players">Player List</a>
     <h1><%= event.name %></h1>
     <p><%= event.date %></p>
     <p><%= event.course %></p>
@@ -34,11 +37,15 @@
       </thead>
       <tbody>
         <% event.players.forEach(p => { %>
-        <tr>
+        <tr id="<%= p._id %>">
           <td><%= p.name %></td>
           <td class="current-tag"><%= p.currentTag %></td>
           <td class="new-tag"></td>
-          <td class="score-cell">-</td>
+          <td class="score-cell">
+            <% if(event.scores.find(x => x.playerId == p._id)) { %> <%=
+            event.scores.find(x => x.playerId == p._id).score %> <% } else { %>
+            - <% } %>
+          </td>
         </tr>
         <% }) %>
       </tbody>
