@@ -10,10 +10,25 @@ const $tbody = $('tbody');
 const $score = $('.score-cell');
 
 // Event Listeners
-$button.on('click', getAllCurrentTags);
+$button.on('click', sortTable);
 $score.on('click', enterScore);
 
 // Functions
+function assignNewTags(tagArray) {
+  tagArray.sort((a, b) => {
+    if (a > b) {
+      return 1;
+    }
+    if (a < b) {
+      return -1;
+    }
+    return 0;
+  });
+  $('.new-tag').each((i, e) => {
+    e.innerHTML = tagArray[i];
+  });
+}
+
 function getAllCurrentTags() {
   const tagArray = [];
   $('.current-tag').each((i, e) => {
@@ -28,7 +43,7 @@ function enterScore(event) {
 }
 
 function sortTable() {
-  $rows.sort(function (a, b) {
+  $rows.sort((a, b) => {
     let A = parseInt($(a).children('td').eq(3).text(), 10);
     let B = parseInt($(b).children('td').eq(3).text(), 10);
     if (A < B) {
@@ -42,4 +57,5 @@ function sortTable() {
   $.each($rows, function (index, row) {
     $('#mytable').children('tbody').append(row);
   });
+  assignNewTags(getAllCurrentTags());
 }
