@@ -12,7 +12,9 @@
     <a href="/players/new">Add New Player</a>
     <ul>
       <% players.forEach(p => { %>
-      <li>Name: <%= p.name %> ID: <%= p._id %></li>
+      <li>
+        Name: <%= p.name %> ID: <%= p._id %> Current Tag: <%= p.currentTag %>
+      </li>
       <% }) %>
     </ul>
   </body>
