@@ -30,6 +30,16 @@ router.put('/:id', (req, res) => {
   });
 });
 
+router.put('/:id/score', (req, res) => {
+  Event.findByIdAndUpdate(
+    req.params.id,
+    { $push: { scores: req.body } },
+    (err, unUpdatedEvent) => {
+      res.redirect('/events/' + req.params.id);
+    }
+  );
+});
+
 router.put('/:id/addplayer', (req, res) => {
   Player.find(req.body, (err, foundPlayer) => {
     console.log('Find Error: ', err);
