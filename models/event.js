@@ -7,7 +7,7 @@ const eventSchema = new Schema(
     date: { type: Date, required: true },
     course: { type: String, required: true },
     players: { type: Array },
-    scores: { type: Array },
+    scores: { type: Object, default: {} },
   },
   { timestamps: true }
 );
