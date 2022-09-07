@@ -10,10 +10,18 @@ const $tbody = $('tbody');
 const $score = $('.score-cell');
 
 // Event Listeners
-$button.on('click', sortTable);
+$button.on('click', getAllCurrentTags);
 $score.on('click', enterScore);
 
 // Functions
+function getAllCurrentTags() {
+  const tagArray = [];
+  $('.current-tag').each((i, e) => {
+    tagArray.push(parseInt(e.innerHTML, 10));
+  });
+  return tagArray;
+}
+
 function enterScore(event) {
   const score = prompt('Please enter score');
   event.target.innerHTML = score;
@@ -21,7 +29,6 @@ function enterScore(event) {
 
 function sortTable() {
   $rows.sort(function (a, b) {
-    console.log($(a).children('td').eq(3).text());
     let A = parseInt($(a).children('td').eq(3).text(), 10);
     let B = parseInt($(b).children('td').eq(3).text(), 10);
     if (A < B) {
