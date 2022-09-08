@@ -8,6 +8,7 @@ const eventSchema = new Schema(
     course: { type: String, required: true },
     players: { type: Array },
     scores: { type: Array, default: [] },
+    newTags: { type: Array, default: [] },
   },
   { timestamps: true }
 );
