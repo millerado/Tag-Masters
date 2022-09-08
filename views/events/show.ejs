@@ -41,7 +41,11 @@
         <tr class="player-id" id="<%= p._id %>">
           <td><%= p.name %></td>
           <td class="current-tag"><%= p.currentTag %></td>
-          <td class="new-tag"></td>
+          <td class="new-tag">
+            <% if(event.newTags.find(x => x.playerId == p._id)) { %> <%=
+            event.newTags.find(x => x.playerId == p._id).score %> <% } else { %>
+            - <% } %>
+          </td>
           <td class="score-cell">
             <% if(event.scores.find(x => x.playerId == p._id)) { %> <%=
             event.scores.find(x => x.playerId == p._id).score %> <% } else { %>
@@ -51,6 +55,9 @@
         <% }) %>
       </tbody>
     </table>
-    <button id="clickMe">Process Event</button>
+    <button id="process-event">Process Event</button>
+    <br />
+    <br />
+    <button id="export-tags">Export Tags</button>
   </body>
 </html>
