@@ -38,7 +38,7 @@
       </thead>
       <tbody>
         <% event.players.forEach(p => { %>
-        <tr id="<%= p._id %>">
+        <tr class="player-id" id="<%= p._id %>">
           <td><%= p.name %></td>
           <td class="current-tag"><%= p.currentTag %></td>
           <td class="new-tag"></td>
