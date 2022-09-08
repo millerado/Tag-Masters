@@ -39,12 +39,12 @@
       <tbody>
         <% event.players.forEach(p => { %>
         <tr class="player-id" id="<%= p._id %>">
-          <td><%= p.name %></td>
+          <td class="player-name"><%= p.name %></td>
           <td class="current-tag"><%= p.currentTag %></td>
           <td class="new-tag">
-            <% if(event.newTags.find(x => x.playerId == p._id)) { %> <%=
-            event.newTags.find(x => x.playerId == p._id).score %> <% } else { %>
-            - <% } %>
+            <% if(event.newTags.find(x => x._id == p._id)) { %> <%=
+            event.newTags.find(x => x._id == p._id).tag %> <% } else { %> - <% }
+            %>
           </td>
           <td class="score-cell">
             <% if(event.scores.find(x => x.playerId == p._id)) { %> <%=
