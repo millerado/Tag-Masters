@@ -61,9 +61,7 @@ router.put('/:id/addplayer', (req, res) => {
 });
 
 router.put('/:id/update', (req, res) => {
-  const names = stringToArray(req.body.names);
   const ids = stringToArray(req.body.ids);
-  const currentTags = stringToArray(req.body.currentTags);
   const newTags = stringToArray(req.body.newTags);
   newTags.forEach((tag, i) => {
     Event.findByIdAndUpdate(
