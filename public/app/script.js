@@ -13,9 +13,7 @@ const eventId = $('#event-id')[0].innerHTML;
 
 // Event Listeners
 $processButton.on('click', renderEvent);
-$exportButton.on('click', function () {
-  console.log('click');
-});
+$exportButton.on('click', updatePlayerTags);
 $score.on('click', enterScore);
 
 // Functions
@@ -58,6 +56,7 @@ function getAllCurrentTags() {
   return tagArray;
 }
 
+// We need to fix because the tags will not be passing into the function now
 function updatePlayerTags(tags) {
   const ids = [];
   $('.player-id').each((i, row) => {
@@ -66,6 +65,25 @@ function updatePlayerTags(tags) {
   $(document).ready(() => {
     $(
       `<form class="hidden" action="/players/update?_method=PUT" method="POST"><input type="text" name="ids" value="${ids}"></input><input type="text" name="tags" value="${tags}"></input><input type="text" name="eventId" value="${eventId}"></input></form>`
+    )
+      .appendTo('body')
+      .submit();
+  });
+}
+
+function updateEvent(newTags) {
+  const currentTags = getAllCurrentTags();
+  const ids = [];
+  const names = [];
+  $('.player-id').each((i, row) => {
+    ids.push(row.id);
+  });
+  $('.player-name').each((i, cell) => {
+    names.push(cell.innerHTML);
+  });
+  $(document).ready(() => {
+    $(
+      `<form class="hidden" action="/events/${eventId}/update?_method=PUT" method="POST"><input type="text" name="ids" value="${ids}"></input><input type="text" name="newTags" value="${newTags}"></input><input type="text" name="currentTags" value="${currentTags}"></input><input type="text" name="names" value="${names}"></input></form>`
     )
       .appendTo('body')
       .submit();
@@ -93,5 +111,5 @@ function renderEvent() {
   sortTable();
   const tags = sortTags(getAllCurrentTags());
   displayNewTags(tags);
-  updatePlayerTags(tags);
+  updateEvent(tags);
 }
