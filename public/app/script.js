@@ -20,7 +20,7 @@ function enterScore(event) {
   const playerId = event.target.parentNode.id;
   $(document).ready(() => {
     $(
-      `<form action="/events/${eventId}/score?_method=PUT" method="POST"><input type="text" name="playerId" value="${playerId}"/><input type="number" name="score" value="${score}"/></form>`
+      `<form class="hidden" action="/events/${eventId}/score?_method=PUT" method="POST"><input type="text" name="playerId" value="${playerId}"/><input type="number" name="score" value="${score}"/></form>`
     )
       .appendTo('body')
       .submit();
