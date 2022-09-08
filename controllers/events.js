@@ -60,6 +60,23 @@ router.put('/:id/addplayer', (req, res) => {
   });
 });
 
+router.put('/:id/update', (req, res) => {
+  const names = stringToArray(req.body.names);
+  const ids = stringToArray(req.body.ids);
+  const currentTags = stringToArray(req.body.currentTags);
+  const newTags = stringToArray(req.body.newTags);
+  newTags.forEach((tag, i) => {
+    Event.findByIdAndUpdate(
+      req.params.id,
+      {
+        $push: { newTags: { _id: ids[i], tag: tag } },
+      },
+      (err, unUpdatedEvent) => {}
+    );
+  });
+  res.redirect('/events/' + req.params.id);
+});
+
 // Create
 router.post('/', (req, res) => {
   Event.create(req.body, (err, createdEvent) => {
@@ -83,3 +100,17 @@ router.get('/:id', (req, res) => {
 });
 
 module.exports = router;
+
+function stringToArray(string) {
+  let arr = [];
+  let str = '';
+  for (let i = 0; i < string.length + 1; i++) {
+    if (string[i] === ',' || i === string.length) {
+      arr.push(str);
+      str = '';
+    } else {
+      str += string[i];
+    }
+  }
+  return arr;
+}
