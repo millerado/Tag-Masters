@@ -83,7 +83,7 @@ function updateEvent(newTags) {
   });
   $(document).ready(() => {
     $(
-      `<form class="hidden" action="/events/${eventId}/update?_method=PUT" method="POST"><input type="text" name="ids" value="${ids}"></input><input type="text" name="newTags" value="${newTags}"></input><input type="text" name="currentTags" value="${currentTags}"></input><input type="text" name="names" value="${names}"></input></form>`
+      `<form class="hidden" action="/events/${eventId}/update?_method=PUT" method="POST"><input type="text" name="ids" value="${ids}"></input><input type="text" name="newTags" value="${newTags}"></input></form>`
     )
       .appendTo('body')
       .submit();
@@ -113,3 +113,5 @@ function renderEvent() {
   displayNewTags(tags);
   updateEvent(tags);
 }
+
+sortTable();
