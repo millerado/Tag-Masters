@@ -8,6 +8,7 @@ const $table = $('table');
 const $rows = $('#mytable tbody tr');
 const $tbody = $('tbody');
 const $score = $('.score-cell');
+const eventId = $('#event-id')[0].innerHTML;
 
 // Event Listeners
 $button.on('click', renderEvent);
@@ -15,7 +16,6 @@ $score.on('click', enterScore);
 
 // Functions
 function enterScore(event) {
-  const eventId = $('#event-id')[0].innerHTML;
   const score = prompt('Please input your score');
   const playerId = event.target.parentNode.id;
   $(document).ready(() => {
@@ -54,6 +54,20 @@ function getAllCurrentTags() {
   return tagArray;
 }
 
+function updatePlayerTags(tags) {
+  const ids = [];
+  $('.player-id').each((i, row) => {
+    ids.push(row.id);
+  });
+  $(document).ready(() => {
+    $(
+      `<form class="hidden" action="/players/update?_method=PUT" method="POST"><input type="text" name="ids" value="${ids}"></input><input type="text" name="tags" value="${tags}"></input><input type="text" name="eventId" value="${eventId}"></input></form>`
+    )
+      .appendTo('body')
+      .submit();
+  });
+}
+
 function sortTable() {
   $rows.sort((a, b) => {
     let A = parseInt($(a).children('td').eq(3).text(), 10);
@@ -77,21 +91,3 @@ function renderEvent() {
   displayNewTags(tags);
   updatePlayerTags(tags);
 }
-
-/*
-This won't work. Need to rethink how I'm sending tag data after event is processed. Consider using ajax to send a bunch of data at once
-
-function updatePlayerTags(tags) {
-  $rows.each((i, r) => {
-    console.log('Prepping: ', tags[i]);
-    $(document).ready(() => {
-      $(
-        `<form action="/players/${r.id}?_method=PUT" method="POST"><input type="number" name="currentTag" value="${tags[i]}"></input></form>`
-      )
-        .appendTo('body')
-        .submit();
-    });
-    console.log('Submitted:', tags[i]);
-  });
-}
-*/
