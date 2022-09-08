@@ -18,15 +18,18 @@ router.get('/new', (req, res) => {
 // Delete Route
 
 // Update Route
-/*
-Need to send something back
-router.put('/:id', (req, res) => {
-  console.log(req.body);
-  Player.findByIdAndUpdate(req.params.id, req.body, (err, unUpdatedPlayer) => {
-    console.log(req.params.id);
+router.put('/update', (req, res) => {
+  const ids = stringToArray(req.body.ids);
+  const tags = stringToArray(req.body.tags);
+  ids.forEach((id, i) => {
+    Player.findByIdAndUpdate(
+      id,
+      { currentTag: tags[i] },
+      (err, unUpdatedPlayer) => {}
+    );
   });
+  res.redirect('/events/' + req.body.eventId);
 });
-*/
 
 // Create Route
 router.post('/', (req, res) => {
@@ -40,3 +43,17 @@ router.post('/', (req, res) => {
 
 // Show Route
 module.exports = router;
+
+function stringToArray(string) {
+  let arr = [];
+  let str = '';
+  for (let i = 0; i < string.length + 1; i++) {
+    if (string[i] === ',' || i === string.length) {
+      arr.push(str);
+      str = '';
+    } else {
+      str += string[i];
+    }
+  }
+  return arr;
+}
