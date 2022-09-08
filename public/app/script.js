@@ -3,7 +3,8 @@
 // States
 
 // Cached Elements
-const $button = $('#clickMe');
+const $processButton = $('#process-event');
+const $exportButton = $('#export-tags');
 const $table = $('table');
 const $rows = $('#mytable tbody tr');
 const $tbody = $('tbody');
@@ -11,7 +12,10 @@ const $score = $('.score-cell');
 const eventId = $('#event-id')[0].innerHTML;
 
 // Event Listeners
-$button.on('click', renderEvent);
+$processButton.on('click', renderEvent);
+$exportButton.on('click', function () {
+  console.log('click');
+});
 $score.on('click', enterScore);
 
 // Functions
