@@ -15,18 +15,17 @@
     <form action="/events/<%= event._id %>?_method=DELETE" method="POST">
       <input type="submit" value="DELETE" />
     </form>
-    <form action="/events/<%= event._id %>/addplayer?_method=PUT" method="POST">
-      <label>Add Player to Event</label>
-      <input type="text" name="name" />
-      <input type="submit" value="Add" />
-    </form>
     <a href="/events/<%= event._id %>/edit">Edit</a>
     <br />
     <a href="/players">Player List</a>
     <h1><%= event.name %></h1>
     <p><%= event.date %></p>
     <p><%= event.course %></p>
-    <p>Players:</p>
+    <form action="/events/<%= event._id %>/addplayer?_method=PUT" method="POST">
+      <label>Add Player to Event</label>
+      <input type="text" name="name" />
+      <input type="submit" value="Add" />
+    </form>
     <table id="mytable">
       <thead>
         <tr>
