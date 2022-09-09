@@ -29,7 +29,7 @@ app.use(express.static('public'));
 
 // Homepage Redirect
 app.get('/', (req, res) => {
-  res.render('homepage.ejs');
+  res.redirect('/events');
 });
 
 // Mount Controllers
