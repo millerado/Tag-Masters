@@ -49,6 +49,24 @@ nav h3 {
 /* Event List */
 h1 {
   font-size: 49px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.btn {
+  text-decoration: none;
+  background-color: rgb(237, 237, 237);
+  color: black;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.new-event {
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 10px;
+  margin-bottom: 10px;
 }
 
 ul {
@@ -56,11 +74,21 @@ ul {
   border: 1px solid grey;
   border-radius: 5px;
   padding: 10px;
+  margin: 0 10px;
 }
 
 li {
   background-color: rgb(237, 237, 237);
+  list-style-type: none;
   border: 1px solid grey;
   border-radius: 5px;
   padding: 10px;
+}
+
+li a {
+  display: inline-block;
+  color: dodgerblue;
+  text-decoration: none;
+  font-size: 25px;
+  margin-bottom: 5px;
 }
