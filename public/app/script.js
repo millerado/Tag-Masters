@@ -56,7 +56,6 @@ function getAllCurrentTags() {
   return tagArray;
 }
 
-// We need to fix because the tags will not be passing into the function now
 function updatePlayerTags(tags) {
   const ids = [];
   $('.player-id').each((i, row) => {
@@ -66,7 +65,6 @@ function updatePlayerTags(tags) {
   $('.new-tag').each((i, tag) => {
     newTags.push(tag.innerHTML.replaceAll('\n', '').replaceAll(' ', ''));
   });
-  console.log(ids, newTags);
   $(document).ready(() => {
     $(
       `<form class="hidden" action="/players/update?_method=PUT" method="POST"><input type="text" name="ids" value="${ids}"></input><input type="text" name="tags" value="${newTags}"></input><input type="text" name="eventId" value="${eventId}"></input></form>`
