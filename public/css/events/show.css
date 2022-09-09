@@ -1,0 +1,37 @@
+@import '../nav.css';
+
+.event-info {
+  background-color: white;
+  padding: 5px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  margin: 0 10px 20px 10px;
+}
+
+.event-info h2 {
+  color: dodgerblue;
+  font-size: 31px;
+  margin-bottom: 10px;
+}
+
+.event-info p {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.new-player {
+  margin: 0 10px 10px 10px;
+}
+
+.new-player input[type='text'] {
+  width: 100%;
+}
+
+.btn {
+  text-decoration: none;
+  background-color: rgb(237, 237, 237);
+  color: black;
+  padding: 2px;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
