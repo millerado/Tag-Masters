@@ -62,9 +62,14 @@ function updatePlayerTags(tags) {
   $('.player-id').each((i, row) => {
     ids.push(row.id);
   });
+  const newTags = [];
+  $('.new-tag').each((i, tag) => {
+    newTags.push(tag.innerHTML.replaceAll('\n', '').replaceAll(' ', ''));
+  });
+  console.log(ids, newTags);
   $(document).ready(() => {
     $(
-      `<form class="hidden" action="/players/update?_method=PUT" method="POST"><input type="text" name="ids" value="${ids}"></input><input type="text" name="tags" value="${tags}"></input><input type="text" name="eventId" value="${eventId}"></input></form>`
+      `<form class="hidden" action="/players/update?_method=PUT" method="POST"><input type="text" name="ids" value="${ids}"></input><input type="text" name="tags" value="${newTags}"></input><input type="text" name="eventId" value="${eventId}"></input></form>`
     )
       .appendTo('body')
       .submit();
