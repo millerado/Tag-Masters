@@ -14,9 +14,11 @@
     <ul>
       <% events.forEach(e => { %>
       <li>
-        <a href="/events/<%= e._id %>"><%= e.name %></a>
-        <p><%= e.course %></p>
-        <p><%= e.date %></p>
+        <a href="/events/<%= e._id %>">
+          <h4><%= e.name %></h4>
+          <p><%= e.course %></p>
+          <p><%= e.date %></p>
+        </a>
       </li>
       <% }); %>
     </ul>
