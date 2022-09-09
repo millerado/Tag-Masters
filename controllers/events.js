@@ -46,7 +46,6 @@ router.put('/:id/addplayer', (req, res) => {
     if (foundPlayer.length === 0) {
       return res.redirect('/events/' + req.params.id);
     }
-    console.log(foundPlayer);
     Event.findByIdAndUpdate(
       req.params.id,
       {
