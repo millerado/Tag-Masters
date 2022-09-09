@@ -10,12 +10,13 @@
   <body>
     <%- include('../partials/nav.ejs')%>
     <h1>Events</h1>
-    <a href="/events/new">Add A New Event</a>
+    <a class="btn new-event" href="/events/new">Create Event</a>
     <ul>
       <% events.forEach(e => { %>
       <li>
         <a href="/events/<%= e._id %>"><%= e.name %></a>
         <p><%= e.course %></p>
+        <p><%= e.date %></p>
       </li>
       <% }); %>
     </ul>
