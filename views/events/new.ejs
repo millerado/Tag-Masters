@@ -4,12 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/events/formPage.css" />
     <title>New Event</title>
   </head>
   <body>
     <%- include('../partials/nav.ejs')%>
-    <h1>Add A New Event</h1>
+    <h1>Create New Event</h1>
+    <a href="/events" class="btn cancel">Cancel</a>
     <form action="/events" method="POST">
       <label for="">Event Name:</label>
       <input type="text" name="name" />
@@ -20,7 +21,7 @@
       <label for="">Course: </label>
       <input type="text" name="course" />
       <br />
-      <input type="submit" value="Add Event" />
+      <input class="btn" type="submit" value="Add Event" />
     </form>
   </body>
 </html>
