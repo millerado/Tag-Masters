@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/events/formPage.css" />
     <title>New Player</title>
   </head>
   <body>
     <%- include('../partials/nav.ejs')%>
     <h1>Add A New Player</h1>
-    <a href="/players">Back</a>
+    <a class="btn cancel" href="/players">Cancel</a>
     <form action="/players" method="POST">
       <label for="">Player Name:</label>
       <input type="text" name="name" />
@@ -18,7 +18,7 @@
       <label>Current Tag</label>
       <input type="number" name="currentTag" />
       <br />
-      <input type="submit" value="Add Player" />
+      <input class="btn" type="submit" value="Add Player" />
     </form>
   </body>
 </html>
