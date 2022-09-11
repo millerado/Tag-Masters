@@ -19,6 +19,7 @@ $score.on('click', enterScore);
 // Functions
 function enterScore(event) {
   const score = prompt('Please input your score');
+  if (isNaN(score)) return;
   const playerId = event.target.parentNode.id;
   $(document).ready(() => {
     $(
