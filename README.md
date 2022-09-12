@@ -11,7 +11,6 @@ A mobile focused web application to help run disc golf tag matches
 - jQuery
 - Javascript
 - Embedded Javscript (ejs)
-- HTML5
 - CSS3
 
 ## Screenshots
