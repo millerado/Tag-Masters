@@ -1,6 +1,6 @@
 # Disc Golf Tag Masters
 
-A mobile focused website to help run disc golf tag matches
+A mobile focused web application to help run disc golf tag matches
 
 ## Technologies Used
 
